@@ -6,8 +6,10 @@ describe('Ecomerce Application', () => {
         await $("#username").setValue("testing")
         await $("#password").setValue("password")
         await $("#signInBtn").click();
-        await browser.pause(3000)
         const text = (await($(".alert-danger").getText()))
-        await console.log(text)
+        const alertBox = await $(".alert-danger")
+        expect(alertBox).toHaveText('Incorrect username/password.')
+        expect(text).toHaveText('Incorrect username/password.')
+        
     })
 })
