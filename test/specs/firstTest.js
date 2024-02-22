@@ -35,4 +35,15 @@ describe('Ecomerce Application', () => {
         expect(alertBox).toHaveText('Incorrect username/password.')
         expect(text).toHaveText('Incorrect username/password.')
     })
+
+    it.only('Xpath test', async () => {
+        await browser.url("https://rahulshettyacademy.com/loginpagePractise");
+        await $("#username").setValue("rahulshettyacademy");
+        await $("//input[@type='password']").setValue("learning");
+        await $("#signInBtn").click();
+        expect(browser).toHaveUrl("https://rahulshettyacademy.com/angularpractice/shop")
+        expect(browser).toHaveUrl(expect.stringContaining("angularpractice/shop"))
+        await browser.pause(5000)
+        
+    })
 })
