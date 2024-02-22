@@ -10,6 +10,29 @@ describe('Ecomerce Application', () => {
         const alertBox = await $(".alert-danger")
         expect(alertBox).toHaveText('Incorrect username/password.')
         expect(text).toHaveText('Incorrect username/password.')
+    })
+
+    it('Xpath test', async () => {
+        await browser.url("https://rahulshettyacademy.com/loginpagePractise");
+        await $("#username").setValue("testing");
+        await $("//input[@type='password']").setValue("testingPassword");
+        await $("#signInBtn").click();
         
+    })
+
+    it('Wait Until', async () => {
+        await browser.url("https://rahulshettyacademy.com/loginpagePractise");
+        await $("#username").setValue("testing");
+        await $("//input[@type='password']").setValue("testingPassword");
+        await $("#signInBtn").click();
+        await browser.waitUntil(async () => await $("#signInBtn").getAttribute('value') === 'Sign In',
+        {
+            timeout: 5000,
+            timeoutMsg: 'The Expected Text To Be Different After 5 Seconds'
+        });
+        const text = (await($(".alert-danger").getText()))
+        const alertBox = await $(".alert-danger")
+        expect(alertBox).toHaveText('Incorrect username/password.')
+        expect(text).toHaveText('Incorrect username/password.')
     })
 })
