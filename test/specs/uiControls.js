@@ -18,6 +18,11 @@ describe('UI Controls Test Suit', () => {
         await $$('.customradio')[0].$('span').isSelected()
         await adminRadioButton.click();
         await expect(modal).not.toBeDisplayed();
+        const dropDown = await $('select.form-control');
+        await dropDown.selectByAttribute('value', 'teach')
+        // await browser.pause(5000)
+        // (await $('#terms')).click()
+        // dropDown.selectByVisibleText('Teacher')
         await $("#signInBtn").click();        
     })
 })
