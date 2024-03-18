@@ -2,7 +2,26 @@ import { expect as expectChai } from 'chai'
 
 describe('UI Controls Test Suit', () => {
     
-    it('UI Controls', async () => {
+    it.only('Dynamic Dropdown Controls', async () => {
+        await browser.url("https://rahulshettyacademy.com/AutomationPractice");
+        const countries = await $("#autocomplete")
+        await countries.click()
+        await countries.setValue("ind")
+    
+        // Wait for the dropdown items to be displayed
+        await $("#ui-id-1").waitForDisplayed({ timeout: 10000 });
+    
+        let countriesMatchList = await $$("[class='ui-menu-item'] div")
+        console.log("countriesMatchList.length", countriesMatchList.length)
+        for(var i = 0; i < countriesMatchList.length; i++) {
+            console.log('countriesMatchList', await countriesMatchList[i].getText())
+        }
+    })
+    
+    
+    
+    
+    it('UI Controls 2', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise");
         await $("#username").setValue("rahulshettyacademy");
@@ -25,8 +44,8 @@ describe('UI Controls Test Suit', () => {
         await dropDown.selectByAttribute('value', 'teach')
         expectChai(await dropDown.getValue()).to.equal('teach')
         // await browser.pause(5000)
-        // (await $('#terms')).click()
-        // dropDown.selectByVisibleText('Teacher')
+        await $('#terms').click()
+        dropDown.selectByVisibleText('Teacher')
         await $("#signInBtn").click();        
     })
 })
