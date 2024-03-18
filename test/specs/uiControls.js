@@ -1,3 +1,7 @@
+var chai = require('chai');
+var chaiWebdriver = require('chai-webdriverio').default;
+chai.use(chaiWebdriver(browser));
+
 describe('UI Controls Test Suit', () => {
     
     it('UI Controls', async () => {
@@ -20,6 +24,7 @@ describe('UI Controls Test Suit', () => {
         await expect(modal).not.toBeDisplayed();
         const dropDown = await $('select.form-control');
         await dropDown.selectByAttribute('value', 'teach')
+        chai.expect(await dropDown.getValue()).to.equal('teach')
         // await browser.pause(5000)
         // (await $('#terms')).click()
         // dropDown.selectByVisibleText('Teacher')

@@ -2,7 +2,7 @@
     "compilerOptions": {
         "types": [
             "node",
-            "@wdio/globals/types",
+            // "@wdio/globals/types",
             "@wdio/mocha-framework"
         ]
     },
@@ -10,6 +10,6 @@
         "test/specs/*js",
         "**/*.json",
         "node_modules/@wdio/sync",
-        "node_modules/mocha-framework"
-    ]
+        "node_modules/mocha-framework",
+        ".babelrc"    ]
 }

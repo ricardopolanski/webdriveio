@@ -1,4 +1,5 @@
-exports.config = {
+
+export const config = {
     //
     // ====================
     // Runner Configuration
@@ -139,8 +140,12 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000,
+        // require: ['@babel/register']
+        // compilers: ['js:babel-core/register'],
+        // require: ['./test/helpers/common.js']
     },
+    
 
     //
     // =====
@@ -194,8 +199,12 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+        require('@babel/register')
+        ({
+            presets: ['@babel/preset-env']
+        });
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
@@ -304,4 +313,5 @@ exports.config = {
     */
     // afterAssertion: function(params) {
     // }
+    
 }
