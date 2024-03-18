@@ -1,10 +1,9 @@
-var chai = require('chai');
-var chaiWebdriver = require('chai-webdriverio').default;
-chai.use(chaiWebdriver(browser));
+import { expect as expectChai } from 'chai'
 
 describe('UI Controls Test Suit', () => {
     
     it('UI Controls', async () => {
+
         await browser.url("https://rahulshettyacademy.com/loginpagePractise");
         await $("#username").setValue("rahulshettyacademy");
         await $("//input[@type='password']").setValue("learning");
@@ -24,7 +23,7 @@ describe('UI Controls Test Suit', () => {
         await expect(modal).not.toBeDisplayed();
         const dropDown = await $('select.form-control');
         await dropDown.selectByAttribute('value', 'teach')
-        chai.expect(await dropDown.getValue()).to.equal('teach')
+        expectChai(await dropDown.getValue()).to.equal('teach')
         // await browser.pause(5000)
         // (await $('#terms')).click()
         // dropDown.selectByVisibleText('Teacher')

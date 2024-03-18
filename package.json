@@ -3,32 +3,29 @@
   "version": "1.0.0",
   "description": "��#\u0000 \u0000w\u0000e\u0000b\u0000d\u0000r\u0000i\u0000v\u0000e\u0000i\u0000o\u0000\r\u0000 \u0000#\u0000 \u0000w\u0000e\u0000b\u0000d\u0000r\u0000i\u0000v\u0000e\u0000i\u0000o\u0000\r\u0000 \u0000\r\u0000 \u0000n\u0000p\u0000x\u0000 \u0000w\u0000d\u0000i\u0000o\u0000 \u0000r\u0000u\u0000n\u0000 \u0000.\u0000\\\u0000w\u0000d\u0000i\u0000o\u0000.\u0000c\u0000o\u0000n\u0000f\u0000.\u0000j\u0000s\u0000\r\u0000 \u0000",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "wdio",
     "wdio": "wdio run ./wdio.conf.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@testing-library/webdriverio": "^3.2.1",
-    "@wdio/allure-reporter": "^8.32.2",
-    "@wdio/cli": "^8.32.2",
-    "@wdio/local-runner": "^8.32.2",
-    "@wdio/mocha-framework": "^8.32.2",
-    "@wdio/spec-reporter": "^8.32.2",
-    "@wdio/visual-service": "^3.0.2",
-    "wdio-wait-for": "^3.0.11"
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/register": "^7.23.7",
+    "@wdio/local-runner": "^8.34.1",
+    "@wdio/mocha-framework": "^8.33.1",
+    "@wdio/spec-reporter": "^8.32.4",
+    "@wdio/visual-service": "^4.0.1",
+    "webdriverio": "^8.34.1"
   },
   "dependencies": {
-    "@babel/core": "^7.24.0",
-    "@babel/register": "^7.23.7",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "chai": "^5.1.0",
-    "chai-webdriverio": "^1.0.0",
-    "mocha": "^10.3.0"
-  },
-  "directories": {
-    "test": "test"
+    "@wdio/cli": "^8.34.1",
+    "chai": "^4.0.1",
+    "chai-webdriverio": "^1.0.0"
   }
 }

@@ -1,5 +1,4 @@
-
-export const config = {
+exports.config = {
     //
     // ====================
     // Runner Configuration
@@ -23,7 +22,6 @@ export const config = {
     //
     specs: [
         './test/specs/**/uiControls.js'
-        // './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -46,7 +44,6 @@ export const config = {
     // from the same test should run tests.
     //
     maxInstances: 10,
-    
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -54,15 +51,7 @@ export const config = {
     //
     capabilities: [{
         browserName: 'chrome'
-    },
-    //  {
-    //     browserName: 'firefox'
-    // }, {
-    //     browserName: 'safari'
-    // }, {
-    //     browserName: 'MicrosoftEdge'
-    // }
-],
+    }],
 
     //
     // ===================
@@ -134,18 +123,14 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    // reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
+    reporters: ['spec'],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000,
-        // require: ['@babel/register']
-        // compilers: ['js:babel-core/register'],
-        // require: ['./test/helpers/common.js']
+        timeout: 60000
     },
-    
 
     //
     // =====
@@ -199,12 +184,8 @@ export const config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    before: function (capabilities, specs) {
-        require('@babel/register')
-        ({
-            presets: ['@babel/preset-env']
-        });
-    },
+    // before: function (capabilities, specs) {
+    // },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
@@ -221,8 +202,15 @@ export const config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: function (test, context) {
+        var chai = require('chai');
+        var chaiWebdriver = require('chai-webdriverio').default;
+        chai.use(chaiWebdriver(browser));
+
+        // global.assert = chai.assert
+        // global.expect = chai.expect
+        // chai.should()
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
@@ -245,11 +233,8 @@ export const config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-        if (!passed) {
-            await browser.takeScreenshot();
-        }
-    },
+    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
+    // },
 
 
     /**
@@ -313,5 +298,4 @@ export const config = {
     */
     // afterAssertion: function(params) {
     // }
-    
 }
