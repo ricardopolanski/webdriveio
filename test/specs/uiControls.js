@@ -20,11 +20,18 @@ describe('UI Controls Test Suit', () => {
         }
     })
 
-    it.only('Check Boxes', async () => { 
+    it.only('Scrolling and Mouse Hover', async () => {
+        await browser.url("https://rahulshettyacademy.com/AutomationPractice");
+        await $("#mousehover").scrollIntoView();
+        await $('.mouse-hover-content').isDisplayed()
+    })
+
+    it('Check Boxes', async () => { 
         await browser.url("https://rahulshettyacademy.com/AutomationPractice");
         const checkBoxes = await $$("input[type='checkbox']");
         checkBoxes[1].click()
         checkBoxes[1].isSelected()
+        //browser.saveScreenshot("screenShot.png")
     })
    
     it('UI Controls 2', async () => {
