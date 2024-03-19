@@ -2,7 +2,7 @@ import { expect as expectChai } from 'chai'
 
 describe('UI Controls Test Suit', () => {
     
-    it.only('Dynamic Dropdown Controls', async () => {
+    it('Dynamic Dropdown Controls', async () => {
         await browser.url("https://rahulshettyacademy.com/AutomationPractice");
         const countries = await $("#autocomplete")
         await countries.click()
@@ -17,13 +17,16 @@ describe('UI Controls Test Suit', () => {
             {
                 await countriesMatchList[i].click()
             }
-            await browser.pause(4000)
         }
     })
-    
-    
-    
-    
+
+    it.only('Check Boxes', async () => { 
+        await browser.url("https://rahulshettyacademy.com/AutomationPractice");
+        const checkBoxes = await $$("input[type='checkbox']");
+        checkBoxes[1].click()
+        checkBoxes[1].isSelected()
+    })
+   
     it('UI Controls 2', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise");
