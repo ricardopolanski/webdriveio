@@ -12,9 +12,12 @@ describe('UI Controls Test Suit', () => {
         await $("#ui-id-1").waitForDisplayed({ timeout: 10000 });
     
         let countriesMatchList = await $$("[class='ui-menu-item'] div")
-        console.log("countriesMatchList.length", countriesMatchList.length)
         for(var i = 0; i < countriesMatchList.length; i++) {
-            console.log('countriesMatchList', await countriesMatchList[i].getText())
+            if (await countriesMatchList[i].getText() === "India")
+            {
+                await countriesMatchList[i].click()
+            }
+            await browser.pause(4000)
         }
     })
     
