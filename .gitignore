@@ -1,2 +1,4 @@
 node_modules
 allure-results
+.tmp
+test/specs/__snapshots__

@@ -20,10 +20,12 @@ describe('UI Controls Test Suit', () => {
         }
     })
 
-    it.only('Scrolling and Mouse Hover', async () => {
+    it('Scrolling and Mouse Hover', async () => {
         await browser.url("https://rahulshettyacademy.com/AutomationPractice");
         await $("#mousehover").scrollIntoView();
+        await $("#mousehover").moveTo();
         await $('.mouse-hover-content').isDisplayed()
+        await $("=TOP").click()
     })
 
     it('Check Boxes', async () => { 
