@@ -17,6 +17,19 @@ describe('Windows and Frames', async () => {
         await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
         await browser.newWindow('http://google.com')
         console.log(await browser.getTitle())
+        await browser.switchWindow("https://rahulshettyacademy.com/loginpagePractise/")
+        console.log(await browser.getTitle())
+    })
+
+    it.only('Frames', async () => {
+        await browser.url('https://rahulshettyacademy.com/AutomationPractice/')
+        await $("#mousehover").scrollIntoView();
+        console.log(await $$('a').length)
+        await browser.switchToFrame(await $("[id='courses-iframe']"))
+        console.log(await $$('a').length)
+        await $("=Courses").click()
+        await browser.pause(5000)
+        await browser.switchToFrame(null) //Exit the Frame
     })
 
 })
