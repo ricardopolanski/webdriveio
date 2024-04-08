@@ -11,6 +11,12 @@ describe('Windows and Frames', async () => {
         await browser.closeWindow()
         await browser.switchToWindow(window[0])
         await browser.getTitle()
+    });
 
+    it('Open New Window', async () => {
+        await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
+        await browser.newWindow('http://google.com')
+        console.log(await browser.getTitle())
     })
+
 })
